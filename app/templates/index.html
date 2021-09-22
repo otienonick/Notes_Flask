@@ -1,0 +1,29 @@
+{% extends 'base.html'%}
+
+{%block content%}
+
+<h1 class="text-center">Notes</h1>
+
+
+{% for note in user.notes%}
+<div class="card" style="width: 18rem;">
+    <img src="//unsplash.it/400/300" class="card-img-top" alt="...">
+    <div class="card-body">
+      <p class="card-text">{{note.text}}</p>
+      <p class="card-text">{{note.date.today().strftime('%Y-%m-%d %H:%M')}}</p>
+
+      <a href="#" type="button"  onClick="deleteNote({{note.id}})" class="btn btn-primary close">Delete Note</a>
+    </div>
+  </div>
+  {%endfor%}
+
+
+
+<form method="POST">
+    <textarea name="note" id="note" class="form-control"></textarea><br>
+    <div class="text-center">
+        <button type="submit" class="btn btn-success">Add Note</button>
+    </div>
+
+</form>
+{%endblock%}
